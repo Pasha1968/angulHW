@@ -1,2 +1,15 @@
 <p>dashboard works!</p>
 
+
+<table class="table" *ngIf='messages'>
+  <tbody>
+   <tr>
+      <td>
+        <textarea rows="6" cols="60" [(ngModel)]='newMessageText'></textarea>
+      </td>
+      <td class="btn">
+        <button class="edit" (click)='createNewMessage()'>Create message</button>
+      </td>
+   </tr>
+  </tbody>
+</table> 

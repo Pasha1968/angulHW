@@ -21,5 +21,11 @@ export class DashboardComponent implements OnInit {
       console.log(data);
     });
   }
+  createNewMessage() {
+    this.messageService.post(this.newMessageText).subscribe(
+      data => this.messages.push(data),
+      () => this.newMessageText = ""
+    );
+  }
 
 }
