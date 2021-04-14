@@ -2,7 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 // Constants
 const PORT = 8080;
 
@@ -11,7 +11,7 @@ const app = express();
 
 app.use(bodyParser.json());
 let storage = [];
-
+app.use(cors());
 function getMsg(index) {  
   return index < storage.length ? {
     id: index,
