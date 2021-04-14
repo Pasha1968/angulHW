@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 import { Message } from './message';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class MessageService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private url: string = "http://localhost:8080/api/values";
+  private url: string = "http://localhost:8080/api/values/";
 
   get(): Observable<Message[]> {
     return this.httpClient.get<Message[]>(this.url);

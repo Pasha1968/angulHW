@@ -1,15 +1,30 @@
-<p>dashboard works!</p>
+<p *ngIf='!messages'><em>Loading...</em></p>
 
-
-<table class="table" *ngIf='messages'>
+<table *ngIf='messages'>
   <tbody>
+    <tr *ngFor='let message of messages'>
+      <td >
+        <p *ngIf='!message.isEditing'>
+          {{ message }}
+        </p>
+        <textarea 
+         *ngIf='message.isEditing' [(ngModel)]='changedText'></textarea>
+      </td>
+      <td >
+        <button  *ngIf='!message.isEditing' (click)='changeMessage(message.id)'>Change</button>
+        <button  *ngIf='message.isEditing' (click)='changeConfirm(message.id)'>Confirm</button>	
+      </td>
+      <td>
+        <button (click)="deleteMessage(message.id)">Delete</button>
+      </td>
+   </tr>
    <tr>
       <td>
-        <textarea rows="6" cols="60" [(ngModel)]='newMessageText'></textarea>
+        <textarea [(ngModel)]='newMessageText'></textarea>
       </td>
-      <td class="btn">
+      <td >
         <button class="edit" (click)='createNewMessage()'>Create message</button>
       </td>
    </tr>
   </tbody>
-</table> 
+</table>
